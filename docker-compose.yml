@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  backend:
+    build: ./MedQuizBackEnd
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./MedQuizBackEnd:/app
+    environment:
+      - NODE_ENV=development
+    # Uncomment the next line if you need host networking on Linux for local MongoDB
+    # network_mode: "host"
+
+  frontend:
+    build: ./MDKKUQUIZ
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./MDKKUQUIZ:/app
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend 
